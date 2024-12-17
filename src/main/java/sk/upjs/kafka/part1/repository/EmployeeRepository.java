@@ -6,7 +6,7 @@ import sk.upjs.kafka.part1.entity.Employee;
 
 
 @Repository
-    public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-        boolean existsByCardId(String cardId);
-    }
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    boolean existsByCardId(String cardId);
+}
 

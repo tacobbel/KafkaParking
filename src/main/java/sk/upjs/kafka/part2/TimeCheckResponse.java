@@ -1,9 +1,14 @@
 package sk.upjs.kafka.part2;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
 
-public class TimeCheckResponse {
+public class TimeCheckResponse implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private String cardId;
     private LocalDate date;
@@ -17,17 +22,11 @@ public class TimeCheckResponse {
         this.cardId = cardId;
     }
 
-    public Duration getDuration() {
-        return duration;
-    }
 
     public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -38,8 +37,8 @@ public class TimeCheckResponse {
         return "TimeCheckResponse{" +
                 "cardId='" + cardId + '\'' +
                 ", date=" + date +
-                ", hours=" + duration.toHours()+
-                ", minutes=" + duration.toMinutes()+
+                ", hours=" + duration.toHours() +
+                ", minutes=" + duration.toMinutes() % 60 +
                 '}';
     }
 }

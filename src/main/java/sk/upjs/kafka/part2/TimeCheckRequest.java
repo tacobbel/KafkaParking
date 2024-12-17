@@ -1,8 +1,13 @@
 package sk.upjs.kafka.part2;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class TimeCheckRequest {
+public class TimeCheckRequest implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private String cardId;
 

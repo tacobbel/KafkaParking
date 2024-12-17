@@ -17,34 +17,25 @@ public class ParkingGate {
     @Column(name = "card_id", nullable = false)
     private String cardId;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "direction", nullable = false)
+    private String direction;
+
+    @Column(name = "timestamp", nullable = false)
+    private LocalDateTime timestamp;
 
 
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
 
     public String getDirection() {
         return direction;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getCardId() {
         return cardId;
@@ -54,14 +45,5 @@ public class ParkingGate {
         this.cardId = cardId;
     }
 
-
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "direction", nullable = false)
-    private String direction;
-
-    @Column(name = "timestamp", nullable = false)
-    private LocalDateTime timestamp;
 
 }

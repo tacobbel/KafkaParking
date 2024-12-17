@@ -15,6 +15,7 @@ public interface ParkingGateRepository extends JpaRepository<ParkingGate, Long> 
 
     ArrayList<ParkingGate> findByCardIdAndTimestampBetween(String cardId, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
-    @Query("SELECT l.cardId, l.name, l.direction, l.timestamp FROM ParkingGate l WHERE l.cardId = :cardId ORDER BY l.timestamp DESC")
+    @Query("SELECT l FROM ParkingGate l WHERE l.cardId = :cardId ORDER BY l.timestamp DESC")
     ParkingGate findLatestLogByCardId(@Param("cardId") String cardId);
+
 }

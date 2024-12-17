@@ -26,11 +26,11 @@ public class ProducerApp {
     @PostConstruct
     private void generateTimeCheckRequest() {
         TimeCheckRequest request = new TimeCheckRequest();
-        request.setCardId("12345");
-        request.setDate(LocalDate.parse("2024-12-15"));
+        request.setCardId("54321");
+        request.setDate(LocalDate.parse("2024-12-17"));
 
         kafkaTemplate.send("timeCheckRequestTopic", request);
-        System.out.println("Sent time check request message: " + request);
+        System.out.println("Sent time check request: " + request);
     }
 
     @KafkaListener(topics = "timeCheckResponseTopic", groupId = "timeResponseGroup")

@@ -25,10 +25,10 @@ public class ConsumerService {
         if (logs.isEmpty()) {
             ParkingGate lastLog = parkingGateRepository.findLatestLogByCardId(cardId);
             if (lastLog != null && Objects.equals(lastLog.getDirection(), "I")) {
-                if (lastLog.getTimestamp().toLocalDate().equals(LocalDate.now())) {
-                    return Duration.between(lastLog.getTimestamp(), LocalDateTime.now());
+                if (date.equals(LocalDate.now())) {
+                    return Duration.between(date.atStartOfDay(), LocalDateTime.now());
                 } else {
-                    return Duration.between(lastLog.getTimestamp(), date.plusDays(1).atStartOfDay());
+                    return Duration.between(date.atStartOfDay(), date.plusDays(1).atStartOfDay());
                 }
             }
         }

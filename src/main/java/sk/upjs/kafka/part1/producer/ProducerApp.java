@@ -7,6 +7,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import sk.upjs.kafka.part1.AccessRequest;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
 public class ProducerApp {
@@ -20,10 +21,11 @@ public class ProducerApp {
     @PostConstruct
     private void generateAccessRequest() {
         AccessRequest request = new AccessRequest();
-        request.setCardId("67890");
+        request.setCardId("54321");
         request.setLocation("Main Gate");
+//        request.setTimestamp(LocalDateTime.parse("2024-12-16 08:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         request.setTimestamp(LocalDateTime.now());
-        request.setDirection("O"); // Nastavíme ENUM z ParkingGate
+        request.setDirection("O");
 
         kafkaTemplate.send("parkingGateTopic", request);
         System.out.println("Sent access request message: " + request);
